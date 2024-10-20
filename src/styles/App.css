@@ -1,0 +1,64 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.youtube-search {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  overflow-anchor: none;
+}
+
+.playlist {
+
+  flex-direction: column;
+}
+
+.audio-player {
+  height: 200px;
+  background-color: #181818;
+  border-top: 1px solid #282828;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .playlist {
+    width: 100%;
+    height: 200px;
+    border-left: none;
+    border-top: 1px solid #282828;
+  }
+}
+
+/* Asegurarse de que el contenido no se desborde */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Estilos adicionales para los componentes internos */
+.youtube-search, .playlist, .audio-player {
+  box-sizing: border-box;
+}

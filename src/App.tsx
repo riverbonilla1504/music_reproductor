@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import YoutubeSearch from './components/YoutubeSearch';
+import VideoPlayList from './components/VideoPlayList';
+import AudioPlayer from './components/AudioPlayer';
+import { DoublyLinkedList } from './utils/DoublyLinkedList';
+import { Video } from './types/videoTypes';
+import './styles/App.css';
 
-function App() {
+const App: React.FC = () => {
+  const [playList, setPlayList] = useState<DoublyLinkedList<Video>>(new DoublyLinkedList());
+
+  const addToPlaylist = (video: Video) => {
+    setPlayList((prevList) => {
+      const newList = new DoublyLinkedList<Video>();
+      let currentNode = prevList.head;
+
+      // Agregar videos a la nueva lista
+      while (currentNode) {
+        newList.append(currentNode.data);
+        currentNode = currentNode.next;
+      }
+
+      newList.append(video); // Agregar el nuevo video
+      return newList; // Actualiza el estado con la nueva lista
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="main-content">
+        <div className="content-area">
+          <div className="youtube-search">
+            <YoutubeSearch onAddToPlaylist={addToPlaylist} />
+          </div>
+        </div>
+        <div className="playlist">
+          <VideoPlayList playList={playList} />
+        </div>
+      </div>
+      <div className="audio-player">
+        <AudioPlayer playList={playList} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
