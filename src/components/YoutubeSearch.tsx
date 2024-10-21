@@ -14,6 +14,7 @@ const YoutubeSearch: React.FC<YoutubeSearchProps> = ({ onAddToPlaylist }) => {
 
   const searchYouTube = async () => {
     const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY; 
+    console.log(apiKey);
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${searchQuery}&key=${apiKey}`;
     const response = await axios.get<{ items: Video[] }>(url);
     setVideos(response.data.items);

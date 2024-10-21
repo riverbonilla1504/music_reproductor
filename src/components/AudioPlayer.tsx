@@ -51,7 +51,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ playList }) => {
         clearInterval(interval); 
       };
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [player, currentVideo]);
 
   const handleNext = () => {

@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #121212;
+  background-color: #2C2C34;
   color: white;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .main-content {
@@ -32,12 +33,6 @@
 
   flex-direction: column;
   display: auto;
-}
-
-.audio-player {
-  height: 150px;
-  background-color: #181818;
-  border-top: 1px solid #282828;
 }
 
 @media (max-width: 768px) {

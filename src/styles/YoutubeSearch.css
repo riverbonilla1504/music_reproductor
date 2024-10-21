@@ -1,10 +1,10 @@
 .youtube-search {
-  background-color: #121212;
   color: white;
   min-height: 90vh;
   padding: 2rem;
   scrollbar-color: #282828 #121212;
   display: flex;
+  overflow-x: hidden;
 }
 
 .youtube-search::-webkit-scrollbar {
@@ -26,77 +26,135 @@
 .search-container {
   justify-content: center;
   margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.search-container:hover {
+  transform: scale(1.02);
 }
 
 .search-header {
   text-align: center;
   margin-bottom: 2rem;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .search-header h2 {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  position: relative;
+}
+
+.search-header h2::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  background-color: #B18FCF;
+  box-shadow: 0px 4px 15px rgba(177, 143, 207, 0.5), 0px 4px 20px rgba(216, 216, 246, 0.5);
+  left: 25%;
+  bottom: -0.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: scaleX(0);
+}
+
+.search-header h2:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .search-input-container {
   position: relative;
-  
+  animation: slideIn 1s ease-in-out;
 }
 
 .search-input {
   width: 80%;
-  background-color: #242424;
+  background-color: #494850;
   color: white;
   padding: 0.75rem 1rem;
   padding-right: 3rem;
   border-radius: 9999px;
   border: none;
   font-size: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .search-input::placeholder {
   color: #a0a0a0;
+  transition: color 0.3s ease;
 }
 
 .search-input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px white;
+  box-shadow: 0px 4px 15px rgba(177, 143, 207, 0.5), 0px 4px 20px rgba(216, 216, 246, 0.5);
+  background-color: #38373d;
+}
+
+.search-input:hover::placeholder {
+  color: white;
 }
 
 .search-button {
   position: absolute;
   top: 50%;
+  right: 1rem;
   transform: translateY(-50%);
   background: none;
   border: none;
   color: #a0a0a0;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .search-button:hover {
   color: white;
+  transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .search-results {
   display: flex;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  
 }
 
 .video-card {
-  background-color: #181818;
+  background-color: #494850;
   border-radius: 0.5rem;
   overflow: hidden;
   transition: background-color 0.2s;
   width: 250px;
   height: 280px;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .video-card:hover {
-  background-color: #282828;
+  background-color: #B18FCF;
 }
 
 .video-thumbnail {
@@ -135,6 +193,7 @@
   border: none;
   cursor: pointer;
   transition: transform 0.2s;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .add-button:hover {

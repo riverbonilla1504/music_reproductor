@@ -44,17 +44,11 @@ const App: React.FC = () => {
     <div className="app-container">
       <div className="main-content">
         <div className="content-area">
-          <div className="youtube-search">
             <YoutubeSearch onAddToPlaylist={addToPlaylist} />
-          </div>
         </div>
-        <div className="playlist">
           <VideoPlayList playList={playList} onRemoveFromPlaylist={removeFromPlaylist} />
-        </div>
       </div>
-      <div className="audio-player">
         <AudioPlayer playList={playList} />
-      </div>
     </div>
   );
 };
