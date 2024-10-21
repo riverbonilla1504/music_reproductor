@@ -1,46 +1,81 @@
-# Getting Started with Create React App
+# Your Project Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Your Project Logo](https://via.placeholder.com/150)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This project is a multimedia playlist application that allows users to search for YouTube videos and manage their playlists. Users can add videos to their playlists, remove them, and enjoy audio playback.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Search for YouTube videos using the YouTube API.
+- Add videos to a custom playlist.
+- Remove videos from the playlist.
+- Audio player to play selected videos.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **Frontend:** React, TypeScript, Axios
+- **Styling:** CSS
+- **Data Structure:** Doubly Linked List for playlist management
+- **Icons:** Lucide React for icons
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (version 14 or later)
+- npm (Node Package Manager)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
 
-### `npm run eject`
+   ```bash
+   git clone https://github.com/yourusername/yourproject.git
+   cd yourproject
+Install the dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+bash
+Copiar código
+npm install
+Create a .env file in the root directory and add your YouTube API key:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+env
+Copiar código
+REACT_APP_YOUTUBE_API_KEY=your_api_key_here
+Start the development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+bash
+Copiar código
+npm start
+Open your browser and navigate to http://localhost:3000 to see the application in action!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Usage
+Use the search bar to find YouTube videos.
+Click on the "Add" button to add videos to your playlist.
+View and manage your playlist on the right side.
+Use the audio player at the bottom to play your selected videos.
+Contributing
+Contributions are welcome! If you have suggestions for improvements, feel free to fork the repository and submit a pull request.
 
-## Learn More
+Fork the project
+Create your feature branch (git checkout -b feature/AmazingFeature)
+Commit your changes (git commit -m 'Add some AmazingFeature')
+Push to the branch (git push origin feature/AmazingFeature)
+Open a pull request
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Acknowledgements
+Thanks to the YouTube Data API for providing the video search functionality.
+Icons provided by Lucide React.
+vbnet
+Copiar código
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Notes:
+
+
+
+
+

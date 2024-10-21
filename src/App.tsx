@@ -24,6 +24,22 @@ const App: React.FC = () => {
     });
   };
 
+  const removeFromPlaylist = (video: Video) => {
+    setPlayList((prevList) => {
+      const newList = new DoublyLinkedList<Video>();
+      let currentNode = prevList.head;
+
+      while (currentNode) {
+        if (currentNode.data.id.videoId !== video.id.videoId) {
+          newList.append(currentNode.data);
+        }
+        currentNode = currentNode.next;
+      }
+      
+      return newList; 
+    });
+  };
+
   return (
     <div className="app-container">
       <div className="main-content">
@@ -33,7 +49,7 @@ const App: React.FC = () => {
           </div>
         </div>
         <div className="playlist">
-          <VideoPlayList playList={playList} />
+          <VideoPlayList playList={playList} onRemoveFromPlaylist={removeFromPlaylist} />
         </div>
       </div>
       <div className="audio-player">

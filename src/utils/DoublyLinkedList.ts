@@ -43,4 +43,26 @@ export class DoublyLinkedList<T> {
     }
     return this.current; 
   }
+
+  delete(data: T) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.data === data) {
+        if (currentNode === this.head && currentNode === this.tail) {
+          this.head = null;
+          this.tail = null;
+        } else if (currentNode === this.head) {
+          this.head = currentNode.next;
+          this.head!.prev = null;
+        } else if (currentNode === this.tail) {
+          this.tail = currentNode.prev;
+          this.tail!.next = null;
+        } else {
+          currentNode.prev!.next = currentNode.next;
+          currentNode.next!.prev = currentNode.prev;
+        }
+      }
+      currentNode = currentNode.next;
+    }
+  }
 }

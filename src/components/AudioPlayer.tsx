@@ -26,8 +26,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ playList }) => {
 
   useEffect(() => {
     if (player && currentVideo) {
-      setProgress(0);
-      setDuration(0);
+
 
       const fetchDuration = () => {
         const currentDuration = player.getDuration();

@@ -1,23 +1,29 @@
 import React from 'react';
 import { Video } from '../types/videoTypes';
 import { DoublyLinkedList } from '../utils/DoublyLinkedList'; 
-import { Play } from "lucide-react"; 
+import { Play, DeleteIcon } from "lucide-react"; 
 import '../styles/VideoPlayList.css';
 
 interface VideoPlayListProps {
   playList: DoublyLinkedList<Video>; 
+  onRemoveFromPlaylist: (video: Video) => void;
 }
 
-const VideoPlayList: React.FC<VideoPlayListProps> = ({ playList }) => {
+const VideoPlayList: React.FC<VideoPlayListProps> = ({ playList, onRemoveFromPlaylist }) => {
   const renderPlaylist = () => {
     const videos: Video[] = [];
     let currentNode = playList.head;
 
-    
     while (currentNode) {
       videos.push(currentNode.data);
       currentNode = currentNode.next;
     }
+
+    const handleDeleteSong = (video: Video) => {
+      return () => {
+        onRemoveFromPlaylist(video);
+      };
+    };
 
     return videos.map((video) => (
       <div className="playlist-item" key={video.id.videoId}>
@@ -27,7 +33,7 @@ const VideoPlayList: React.FC<VideoPlayListProps> = ({ playList }) => {
           <div className="song-artist">{video.snippet.channelTitle}</div>
         </div>
         <div className="play-button">
-          <Play />
+          <DeleteIcon onClick={handleDeleteSong(video)} />
         </div>
       </div>
     ));
