@@ -1,6 +1,4 @@
-# Your Project Title
-
-![Your Project Logo](https://via.placeholder.com/150)
+# Music Player
 
 ## Description
 
@@ -52,10 +50,10 @@ This project is a multimedia playlist application that allows users to search fo
 5. Open your browser and navigate to http://localhost:3000 or you route with the port provide and go to see the application in action!
     
 6. Usage
-    -Use the search bar to find YouTube videos.
-    -Click on the "Add" button to add videos to your playlist.
-    -View and manage your playlist on the right side.
-    -Use the audio player at the bottom to play your selected videos.
+    - Use the search bar to find YouTube videos.
+    - Click on the "Add" button to add videos to your playlist.
+    - View and manage your playlist on the right side.
+    - Use the audio player at the bottom to play your selected videos.
 
 
 
