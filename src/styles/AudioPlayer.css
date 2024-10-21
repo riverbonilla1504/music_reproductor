@@ -23,33 +23,39 @@
   }
   
   .album-cover {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 2rem;
     border-radius: 0.25rem;
+    padding: 0%;
+
   }
   
   .song-details {
-    
+    font-size: smaller;
     display: flex;
     flex-direction: column;
+
   }
   
   .song-title {
     font-weight: 600;
+    margin: 0%;
   }
   
   .artist-name {
     font-size: 0.75rem;
     color: #a3a3a3;
+    width: 100px;
+    margin: 0%;
   }
   
   .playback-controls {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.25rem;
     flex: 1;
-    padding: 0 1rem;
+    padding: 0 0rem;
   }
   
   .control-buttons {

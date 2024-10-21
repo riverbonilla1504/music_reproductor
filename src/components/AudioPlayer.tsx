@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
 import { Video } from '../types/videoTypes';
 import { DoublyLinkedList } from '../utils/DoublyLinkedList';
-import { Volume2, VolumeX, SkipBack, SkipForward, Play, Pause } from 'lucide-react';
-import '../styles/AudioPlayer.css'; // Asegúrate de importar tus estilos
+import { SkipBack, SkipForward, Play, Pause } from 'lucide-react';
+import '../styles/AudioPlayer.css';
 
 interface AudioPlayerProps {
   playList: DoublyLinkedList<Video>;
@@ -12,44 +12,75 @@ interface AudioPlayerProps {
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ playList }) => {
   const [currentVideo, setCurrentVideo] = useState<Video | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [player, setPlayer] = useState<any>(null); // Guarda la instancia del reproductor
-  const [volume, setVolume] = useState(50);
+  const [player, setPlayer] = useState<any>(null);
   const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     const current = playList.getCurrent();
     if (current) {
       setCurrentVideo(current.data);
-      setIsPlaying(true); // Cambia el estado a verdadero para reproducir
+      setIsPlaying(true);
     }
   }, [playList]);
 
+  useEffect(() => {
+    if (player && currentVideo) {
+      setProgress(0);
+      setDuration(0);
+
+      const fetchDuration = () => {
+        const currentDuration = player.getDuration();
+        if (currentDuration && !isNaN(currentDuration)) {
+          setDuration(currentDuration);
+        } 
+      };
+
+      fetchDuration();
+
+      const interval = setInterval(() => {
+        if (player) {
+          const currentTime = player.getCurrentTime();
+          if (duration > 0) {
+            const progressPercentage = (currentTime / duration) * 100;
+            setProgress(progressPercentage);
+          }
+        }
+      }, 1000);
+
+      return () => {
+        clearInterval(interval); 
+      };
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [player, currentVideo]);
+
   const handleNext = () => {
-    playList.next(); // Mover al siguiente video
+    playList.next();
     const current = playList.getCurrent();
     if (current) {
       setCurrentVideo(current.data);
       setIsPlaying(true);
-      player.playVideo();
+      player?.playVideo();
     }
   };
 
   const handlePrevious = () => {
-    playList.previous(); // Mover al video anterior
+    playList.previous();
     const current = playList.getCurrent();
     if (current) {
       setCurrentVideo(current.data);
       setIsPlaying(true);
-      player.playVideo();
+      player?.playVideo();
     }
   };
 
   const togglePlay = () => {
     if (player) {
       if (isPlaying) {
-        player.pauseVideo(); // Pausa el video
+        player.pauseVideo();
       } else {
-        player.playVideo(); // Reproduce el video
+        player.playVideo();
       }
       setIsPlaying(!isPlaying);
     }
@@ -57,19 +88,35 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ playList }) => {
 
   const onReady = (event: any) => {
     setPlayer(event.target);
-    if (isPlaying) {
+    if (currentVideo) {
       event.target.playVideo();
+      const currentDuration = event.target.getDuration();
+      if (currentDuration && !isNaN(currentDuration)) {
+        setDuration(currentDuration);
+      } 
     }
+  };
+
+  const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    setProgress(value);
+    const newTime = (value / 100) * duration;
+    player?.seekTo(newTime);
+  };
+
+  const onError = (event: any) => {
+    console.error("errror loading YouTube video", event.data);
+    setPlayer(null); 
   };
 
   return (
     <div className="audio-player-container">
       <div className="audio-player">
-        {currentVideo && (
+        {currentVideo ? (
           <>
             <div className="song-info">
               <img
-                src={currentVideo.snippet.thumbnails.default.url} // Usa la miniatura del video
+                src={currentVideo.snippet.thumbnails.default.url}
                 alt="Album cover"
                 className="album-cover"
               />
@@ -92,46 +139,30 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ playList }) => {
                 </button>
               </div>
               <div className="progress-bar">
-                <span className="time">0:00</span>
                 <input
                   type="range"
                   min="0"
                   max="100"
                   value={progress}
                   className="slider"
-                  onChange={(e) => setProgress(Number(e.target.value))}
+                  onChange={handleProgressChange}
                 />
-                <span className="time">3:30</span>
               </div>
             </div>
 
-            <div className="volume-control">
-              <button className="volume-button">
-                {volume === 0 ? <VolumeX size={20} /> : <Volume2 size={20} />}
-              </button>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={volume}
-                className="volume-slider"
-                onChange={(e) => setVolume(Number(e.target.value))}
-              />
-            </div>
-
-            {/* Ocultar el iframe de YouTube */}
             <div style={{ display: 'none' }}>
               <YouTube
                 videoId={currentVideo.id.videoId}
-                opts={{ playerVars: { autoplay: isPlaying ? 1 : 0 } }}
+                opts={{ playerVars: { autoplay: isPlaying ? 1 : 0, enablejsapi: 1 } }}
                 onReady={onReady}
                 onEnd={handleNext}
+                onError={onError}
               />
             </div>
           </>
+        ) : (
+          <div></div>
         )}
-      </div>
-      <div className="control-bar">
       </div>
     </div>
   );

@@ -14,14 +14,13 @@ const App: React.FC = () => {
       const newList = new DoublyLinkedList<Video>();
       let currentNode = prevList.head;
 
-      // Agregar videos a la nueva lista
       while (currentNode) {
         newList.append(currentNode.data);
         currentNode = currentNode.next;
       }
 
-      newList.append(video); // Agregar el nuevo video
-      return newList; // Actualiza el estado con la nueva lista
+      newList.append(video); 
+      return newList; 
     });
   };
 

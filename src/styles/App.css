@@ -24,20 +24,22 @@
   overflow-y: auto;
   padding: 10px;
   overflow-anchor: none;
+  left: 10px;
+  width: 76%;
 }
 
 .playlist {
 
   flex-direction: column;
+  display: auto;
 }
 
 .audio-player {
-  height: 200px;
+  height: 150px;
   background-color: #181818;
   border-top: 1px solid #282828;
 }
 
-/* Estilos responsivos */
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column;
@@ -51,14 +53,11 @@
   }
 }
 
-/* Asegurarse de que el contenido no se desborde */
 html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
-
-/* Estilos adicionales para los componentes internos */
 .youtube-search, .playlist, .audio-player {
   box-sizing: border-box;
 }

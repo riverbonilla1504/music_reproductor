@@ -11,14 +11,14 @@ class Node<T> {
 export class DoublyLinkedList<T> {
   head: Node<T> | null = null;
   tail: Node<T> | null = null;
-  current: Node<T> | null = null; // Nodo actual para la reproducción
+  current: Node<T> | null = null; 
 
   append(data: T) {
     const newNode = new Node(data);
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
-      this.current = newNode; // Establecer el primer nodo como actual
+      this.current = newNode; 
     } else {
       newNode.prev = this.tail;
       this.tail!.next = newNode;
@@ -27,20 +27,20 @@ export class DoublyLinkedList<T> {
   }
 
   getCurrent(): Node<T> | null {
-    return this.current; // Retorna el nodo actual
+    return this.current; 
   }
 
   next(): Node<T> | null {
     if (this.current && this.current.next) {
-      this.current = this.current.next; // Mover al siguiente nodo
+      this.current = this.current.next; 
     }
-    return this.current; // Retorna el nuevo nodo actual
+    return this.current; 
   }
 
   previous(): Node<T> | null {
     if (this.current && this.current.prev) {
-      this.current = this.current.prev; // Mover al nodo anterior
+      this.current = this.current.prev; 
     }
-    return this.current; // Retorna el nuevo nodo actual
+    return this.current; 
   }
 }
