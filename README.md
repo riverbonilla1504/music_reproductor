@@ -34,47 +34,28 @@ This project is a multimedia playlist application that allows users to search fo
    ```bash
    git clone https://github.com/yourusername/yourproject.git
    cd yourproject
-Install the dependencies:
 
-bash
-Copiar código
-npm install
-Create a .env file in the root directory and add your YouTube API key:
+2. Install the dependencies:
+    ```bash
+    npm install
 
-env
-Copiar código
-REACT_APP_YOUTUBE_API_KEY=your_api_key_here
-Start the development server:
+3. Create a .env file in the root (src) directory and add your YouTube API key:
+    ```bash
+    REACT_APP_YOUTUBE_API_KEY=your_api_key_here
 
-bash
-Copiar código
-npm start
-Open your browser and navigate to http://localhost:3000 to see the application in action!
+4. Start the development server:
+    
+    ```bash
+    npm start
 
-Usage
-Use the search bar to find YouTube videos.
-Click on the "Add" button to add videos to your playlist.
-View and manage your playlist on the right side.
-Use the audio player at the bottom to play your selected videos.
-Contributing
-Contributions are welcome! If you have suggestions for improvements, feel free to fork the repository and submit a pull request.
 
-Fork the project
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a pull request
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Acknowledgements
-Thanks to the YouTube Data API for providing the video search functionality.
-Icons provided by Lucide React.
-vbnet
-Copiar código
-
-### Notes:
-
+5. Open your browser and navigate to http://localhost:3000 or you route with the port provide and go to see the application in action!
+    
+6. Usage
+    -Use the search bar to find YouTube videos.
+    -Click on the "Add" button to add videos to your playlist.
+    -View and manage your playlist on the right side.
+    -Use the audio player at the bottom to play your selected videos.
 
 
 
