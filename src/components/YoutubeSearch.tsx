@@ -14,7 +14,6 @@ const YoutubeSearch: React.FC<YoutubeSearchProps> = ({ onAddToPlaylist }) => {
 
   const searchYouTube = async () => {
     const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY; 
-    console.log(apiKey);
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${searchQuery}&key=${apiKey}`;
     const response = await axios.get<{ items: Video[] }>(url);
     setVideos(response.data.items);
@@ -24,13 +23,13 @@ const YoutubeSearch: React.FC<YoutubeSearchProps> = ({ onAddToPlaylist }) => {
     <div className="youtube-search">
       <div className="search-container">
         <div className="search-header">
-          <h2>Buscar</h2>
+          <h2>Search</h2>
           <div className="search-input-container">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar videos"
+              placeholder="Search Videos"
               className="search-input"
             />
             <button onClick={searchYouTube} className="search-button">
