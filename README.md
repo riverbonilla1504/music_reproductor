@@ -37,9 +37,9 @@ This project is a multimedia playlist application that allows users to search fo
     ```bash
     npm install
 
-3. Create a .env file in the root directory and add your YouTube API key:
+3. Create a .env file in the root directory and add your YouTube API key (AIzaSyDCMY-b8AxAt9_d2OMbd_WcwXrkyxxN34k):
     ```bash
-    REACT_APP_YOUTUBE_API_KEY=your_api_key_here
+    REACT_APP_YOUTUBE_API_KEY=AIzaSyDCMY-b8AxAt9_d2OMbd_WcwXrkyxxN34k
 
 4. Start the development server:
     
